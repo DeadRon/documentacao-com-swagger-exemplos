@@ -38,4 +38,16 @@ public class TutorialController {
         return null;
     }
 
+    @Operation(
+            summary = "Deleta dados de um tutorial",
+            description = "End point responsável por deletar dados de um tutorial"
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "204")
+    })
+    @DeleteMapping("/tutorials/{id}")
+    public ResponseEntity<Tutorial> deleteTutorialById(@PathVariable("id") long id) {
+        return null;
+    }
+
 }
