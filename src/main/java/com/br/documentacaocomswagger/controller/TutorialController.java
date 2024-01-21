@@ -103,9 +103,10 @@ public class TutorialController {
     }
 
     @Operation(
-            summary = "Método http head"
+            summary = "Método http head",
+            description = "O método HEAD solicita uma resposta de forma idêntica ao método GET, porém sem conter o corpo da resposta."
     )
-    @RequestMapping(value = "Método HTTP head", method = {RequestMethod.HEAD})
+    @RequestMapping(method = {RequestMethod.HEAD})
     public ResponseEntity<?> getInformation(){
         return null;
     }
@@ -122,6 +123,15 @@ public class TutorialController {
     })
     @PatchMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> partiallyUpdateTutorialById(@PathVariable("id") long id) {
+        return null;
+    }
+
+    @Operation(
+            summary = "Método http Options",
+            description = "O método OPTIONS é usado para descrever as opções de comunicação com o recurso de destino."
+    )
+    @RequestMapping(method = {RequestMethod.OPTIONS})
+    public ResponseEntity<?> getOptions(){
         return null;
     }
 
