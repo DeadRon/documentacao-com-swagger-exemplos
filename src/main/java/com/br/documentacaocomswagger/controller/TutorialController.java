@@ -50,4 +50,16 @@ public class TutorialController {
         return null;
     }
 
+    @Operation(
+            summary = "Atualiza dados de um tutorial",
+            description = "End point responsável por atualizar dados de um tutorial"
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "204", content = {@Content(schema = @Schema(implementation = Tutorial.class), mediaType = "application/json")})
+    })
+    @PutMapping("/tutorials/{id}")
+    public ResponseEntity<Tutorial> upodateTutorialById(@PathVariable("id") long id) {
+        return null;
+    }
+
 }
