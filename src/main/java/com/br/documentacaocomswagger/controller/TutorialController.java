@@ -89,8 +89,14 @@ public class TutorialController {
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}) })
     @GetMapping("/tutorials")
     public ResponseEntity<List<Tutorial>> getTutorialById(
-            @Parameter(description = "Busca tutorial pelo status de publicação")
-            @RequestParam(required = false, defaultValue = "true") boolean published
+            @Parameter(description = "Busca tutoriais pelo status de publicação")
+            @RequestParam(required = false, defaultValue = "true") boolean published,
+            @Parameter(description = "Busca tutoriais em algum ano especifico")
+            @RequestParam(required = false, defaultValue = "year") String year,
+            @Parameter(description = "Busca tutoriais de algum genêro especifico")
+            @RequestParam(required = false, defaultValue = "genero") String genero,
+            @Parameter(description = "Busca tutoriais de alguma nacionalidade especifica")
+            @RequestParam(required = false, defaultValue = "bookNationality") String bookNationality
     ) {
 
         return null;
