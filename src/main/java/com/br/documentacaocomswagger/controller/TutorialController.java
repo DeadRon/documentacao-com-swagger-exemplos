@@ -135,4 +135,13 @@ public class TutorialController {
         return null;
     }
 
+    @Operation(
+            summary = "Método http Trace",
+            description = "O método TRACE executa um teste de chamada loop-back junto com o caminho para o recurso de destino"
+    )
+    @RequestMapping(method = {RequestMethod.TRACE})
+    public ResponseEntity<?> getTrace(){
+        return null;
+    }
+
 }
