@@ -8,9 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Tutorial - Controller", description = "Tutorial management APIs")
 @RestController
@@ -25,6 +23,18 @@ public class TutorialController {
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
     @GetMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
+        return null;
+    }
+
+    @Operation(
+            summary = "Salva dados de um tutorial",
+            description = "End point responsável por salvar dados de um tutorial"
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Tutorial.class), mediaType = "application/json")})
+    })
+    @PostMapping("/tutorials")
+    public ResponseEntity<Tutorial> createTutorialById(@RequestBody Tutorial tutorial) {
         return null;
     }
 
