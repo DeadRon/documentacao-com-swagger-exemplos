@@ -4,6 +4,7 @@ import com.br.documentacaocomswagger.handler.dto.ErrorMessageDTO;
 import com.br.documentacaocomswagger.model.Tutorial;
 import com.br.documentacaocomswagger.model.TutorialList;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -88,6 +89,7 @@ public class TutorialController {
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}) })
     @GetMapping("/tutorials")
     public ResponseEntity<List<Tutorial>> getTutorialById(
+            @Parameter(description = "Busca tutorial pelo status de publicação")
             @RequestParam(required = false, defaultValue = "true") boolean published
     ) {
 
