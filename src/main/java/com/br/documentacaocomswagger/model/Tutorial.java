@@ -4,5 +4,8 @@ public record Tutorial(
         String id,
         String title,
         String description,
-        boolean published
+        boolean published,
+        Integer year,
+        String gender,
+        String bookNationality
 ) { }
