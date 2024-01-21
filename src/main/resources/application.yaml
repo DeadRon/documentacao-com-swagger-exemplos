@@ -1,0 +1,4 @@
+bezkoder:
+  openapi:
+    dev-url : http://localhost:8080
+    prod-url : https://bezkoder-api.com
