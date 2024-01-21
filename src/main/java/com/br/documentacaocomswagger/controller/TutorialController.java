@@ -110,4 +110,19 @@ public class TutorialController {
         return null;
     }
 
+    @Operation(
+            summary = "Atualiza parcialmente um tutorial através do id",
+            description = "End point responsável por atualizar parcialmente um tutorial"
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "204", content = {@Content(schema = @Schema(implementation = Tutorial.class), mediaType = "application/json")}),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")})
+    })
+    @PatchMapping("/tutorials/{id}")
+    public ResponseEntity<Tutorial> partiallyUpdateTutorialById(@PathVariable("id") long id) {
+        return null;
+    }
+
 }
