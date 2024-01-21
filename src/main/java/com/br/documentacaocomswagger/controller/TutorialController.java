@@ -102,4 +102,9 @@ public class TutorialController {
         return null;
     }
 
+    @RequestMapping(value = "test", method = {RequestMethod.HEAD})
+    public ResponseEntity<?> getInformation(){
+        return null;
+    }
+
 }
