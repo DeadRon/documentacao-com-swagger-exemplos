@@ -1,6 +1,6 @@
 package com.br.documentacaocomswagger.controller;
 
-import com.br.documentacaocomswagger.config.openapi.model.Tutorial;
+import com.br.documentacaocomswagger.model.Tutorial;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -1,4 +1,4 @@
-package com.br.documentacaocomswagger.config.openapi.model;
+package com.br.documentacaocomswagger.model;
 
 public record Tutorial(
         String id,
