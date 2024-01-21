@@ -2,6 +2,7 @@ package com.br.documentacaocomswagger.controller;
 
 import com.br.documentacaocomswagger.handler.dto.ErrorMessageDTO;
 import com.br.documentacaocomswagger.model.Tutorial;
+import com.br.documentacaocomswagger.model.TutorialList;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -10,6 +11,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Tag(name = "Tutorial - Controller", description = "Tutorial management APIs")
 @RestController
@@ -70,6 +73,21 @@ public class TutorialController {
     })
     @PutMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> upodateTutorialById(@PathVariable("id") long id) {
+        return null;
+    }
+
+    @Operation(
+            summary = "Busca uma lista de Tutoriais",
+            description = "Obtem um toturial através de seu título."
+    )
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = TutorialList.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "401", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}),
+            @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}) })
+    @GetMapping("/tutorials")
+    public ResponseEntity<List<Tutorial>> getTutorialById() {
+
         return null;
     }
 
