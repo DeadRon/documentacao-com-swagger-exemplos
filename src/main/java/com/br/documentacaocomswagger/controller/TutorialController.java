@@ -21,6 +21,7 @@ public class TutorialController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = Tutorial.class), mediaType = "application/json") }),
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json") }),
+            @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")})
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
     @GetMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
@@ -33,7 +34,8 @@ public class TutorialController {
     )
     @ApiResponses({
             @ApiResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Tutorial.class), mediaType = "application/json")}),
-            @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")})
+            @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}),
+            @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")})
     })
     @PostMapping("/tutorials")
     public ResponseEntity<Tutorial> createTutorialById(@RequestBody Tutorial tutorial) {
@@ -45,7 +47,8 @@ public class TutorialController {
             description = "End point responsável por deletar dados de um tutorial"
     )
     @ApiResponses({
-            @ApiResponse(responseCode = "204")
+            @ApiResponse(responseCode = "204"),
+            @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")})
     })
     @DeleteMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> deleteTutorialById(@PathVariable("id") long id) {
@@ -57,7 +60,8 @@ public class TutorialController {
             description = "End point responsável por atualizar dados de um tutorial"
     )
     @ApiResponses({
-            @ApiResponse(responseCode = "204", content = {@Content(schema = @Schema(implementation = Tutorial.class), mediaType = "application/json")})
+            @ApiResponse(responseCode = "204", content = {@Content(schema = @Schema(implementation = Tutorial.class), mediaType = "application/json")}),
+            @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")})
     })
     @PutMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> upodateTutorialById(@PathVariable("id") long id) {
