@@ -78,7 +78,8 @@ public class TutorialController {
 
     @Operation(
             summary = "Busca uma lista de Tutoriais",
-            description = "Obtem um toturial através de seu título."
+            description = "Busca uma lista de Tutoriais. A lista tem um filtro para buscar tutorias que estão que ainda não foram publicados. Basta passar um parâmetro de requisição" +
+                    " chamado 'published', seu valor consiste em um valor booleano (true/false)"
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = TutorialList.class), mediaType = "application/json") }),
@@ -86,7 +87,9 @@ public class TutorialController {
             @ApiResponse(responseCode = "401", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}) })
     @GetMapping("/tutorials")
-    public ResponseEntity<List<Tutorial>> getTutorialById() {
+    public ResponseEntity<List<Tutorial>> getTutorialById(
+            @RequestParam(required = false, defaultValue = "true") boolean published
+    ) {
 
         return null;
     }
