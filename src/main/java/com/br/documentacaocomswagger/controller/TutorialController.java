@@ -1,5 +1,6 @@
 package com.br.documentacaocomswagger.controller;
 
+import com.br.documentacaocomswagger.handler.dto.ErrorMessageDTO;
 import com.br.documentacaocomswagger.model.Tutorial;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -19,7 +20,7 @@ public class TutorialController {
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200", content = { @Content(schema = @Schema(implementation = Tutorial.class), mediaType = "application/json") }),
-            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema()) }),
+            @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json") }),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema()) }) })
     @GetMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
@@ -31,7 +32,8 @@ public class TutorialController {
             description = "End point responsável por salvar dados de um tutorial"
     )
     @ApiResponses({
-            @ApiResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Tutorial.class), mediaType = "application/json")})
+            @ApiResponse(responseCode = "201", content = {@Content(schema = @Schema(implementation = Tutorial.class), mediaType = "application/json")}),
+            @ApiResponse(responseCode = "400", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")})
     })
     @PostMapping("/tutorials")
     public ResponseEntity<Tutorial> createTutorialById(@RequestBody Tutorial tutorial) {
