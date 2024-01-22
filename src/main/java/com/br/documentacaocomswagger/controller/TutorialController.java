@@ -73,6 +73,12 @@ public class TutorialController {
                     description = "id do tutorial",
                     required = true,
                     in = ParameterIn.PATH
+            ),
+            @Parameter(
+                    name = "header teste",
+                    description = "header teste",
+                    required = false,
+                    in = ParameterIn.HEADER
             )
     })
     @DeleteMapping("/tutorials/{id}")
