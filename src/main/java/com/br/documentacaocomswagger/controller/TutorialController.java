@@ -29,6 +29,14 @@ public class TutorialController {
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json") }),
             @ApiResponse(responseCode = "401", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}) })
+    @Parameters({
+            @Parameter(
+                    name = "id",
+                    description = "id do tutorial",
+                    required = true,
+                    in = ParameterIn.PATH
+            )
+    })
     @GetMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> getTutorialById(@PathVariable("id") long id) {
         return null;
@@ -59,6 +67,14 @@ public class TutorialController {
             @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")})
     })
+    @Parameters({
+            @Parameter(
+                    name = "id",
+                    description = "id do tutorial",
+                    required = true,
+                    in = ParameterIn.PATH
+            )
+    })
     @DeleteMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> deleteTutorialById(@PathVariable("id") long id) {
         return null;
@@ -73,6 +89,14 @@ public class TutorialController {
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json") }),
             @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")})
+    })
+    @Parameters({
+            @Parameter(
+                    name = "id",
+                    description = "id do tutorial",
+                    required = true,
+                    in = ParameterIn.PATH
+            )
     })
     @PutMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> upodateTutorialById(@PathVariable("id") long id) {
@@ -144,6 +168,14 @@ public class TutorialController {
             @ApiResponse(responseCode = "404", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json") }),
             @ApiResponse(responseCode = "401", content = {@Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")})
+    })
+    @Parameters({
+            @Parameter(
+                    name = "id",
+                    description = "id do tutorial",
+                    required = true,
+                    in = ParameterIn.PATH
+            )
     })
     @PatchMapping("/tutorials/{id}")
     public ResponseEntity<Tutorial> partiallyUpdateTutorialById(@PathVariable("id") long id) {
