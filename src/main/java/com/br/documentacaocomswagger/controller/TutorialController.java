@@ -5,6 +5,8 @@ import com.br.documentacaocomswagger.model.Tutorial;
 import com.br.documentacaocomswagger.model.TutorialList;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -88,15 +90,37 @@ public class TutorialController {
             @ApiResponse(responseCode = "401", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}),
             @ApiResponse(responseCode = "500", content = { @Content(schema = @Schema(implementation = ErrorMessageDTO.class), mediaType = "application/json")}) })
     @GetMapping("/tutorials")
+    @Parameters({
+            @Parameter(
+                    name = "published",
+                    description = "Busca tutoriais pelo status de publicação",
+                    required = false,
+                    in = ParameterIn.QUERY
+            ),
+            @Parameter(
+                    name = "year",
+                    description = "Busca tutoriais em algum ano especifico",
+                    required = false,
+                    in = ParameterIn.QUERY
+            ),
+            @Parameter(
+                    name = "gender",
+                    description = "Busca tutoriais de algum genêro especifico",
+                    required = false,
+                    in = ParameterIn.QUERY
+            ),
+            @Parameter(
+                    name = "bookNationality",
+                    description = "Busca tutoriais de alguma nacionalidade especifica",
+                    required = false,
+                    in = ParameterIn.QUERY
+            )
+    })
     public ResponseEntity<List<Tutorial>> getTutorialById(
-            @Parameter(description = "Busca tutoriais pelo status de publicação")
             @RequestParam(required = false, defaultValue = "true") boolean published,
-            @Parameter(description = "Busca tutoriais em algum ano especifico")
-            @RequestParam(required = false, defaultValue = "year") String year,
-            @Parameter(description = "Busca tutoriais de algum genêro especifico")
-            @RequestParam(required = false, defaultValue = "genero") String genero,
-            @Parameter(description = "Busca tutoriais de alguma nacionalidade especifica")
-            @RequestParam(required = false, defaultValue = "bookNationality") String bookNationality
+            @RequestParam(required = false) String year,
+            @RequestParam(required = false) String genero,
+            @RequestParam(required = false) String bookNationality
     ) {
 
         return null;
